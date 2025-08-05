@@ -5,12 +5,13 @@ CHOICES=(
 	"Ollama        Run LLMs, like Meta's Llama3, locally"
 	"LazyGit       TUI for Git"
 	"LazyDocker    TUI for Docker"
+	"Mise          Version manager for programming languages and tools"
 	"Neovim        Text editor that runs in the terminal"
 	"Zellij        Adds panes, tabs, and sessions to the terminal"
 	"<< Back       "
 )
 
-CHOICE=$(gum choose "${CHOICES[@]}" --height 10 --header "Update manually-managed applications")
+CHOICE=$(gum choose "${CHOICES[@]}" --height 11 --header "Update manually-managed applications")
 
 if [[ "$CHOICE" == "<< Back"* ]] || [[ -z "$CHOICE" ]]; then
 	# Don't update anything
@@ -21,6 +22,7 @@ else
 	case "$INSTALLER" in
 	"omakub") INSTALLER_FILE="$OMAKUB_PATH/bin/omakub-sub/migrate.sh" ;;
 	"ollama") INSTALLER_FILE="$OMAKUB_PATH/install/terminal/optional/app-ollama.sh" ;;
+	"mise") INSTALLER_FILE="$OMAKUB_PATH/install/terminal/optional/app-mise.sh" ;;
 	*) INSTALLER_FILE="$OMAKUB_PATH/install/terminal/app-$INSTALLER.sh" ;;
 	esac
 

@@ -27,7 +27,9 @@ if [[ -n $languages ]]; then
       sudo rm /usr/local/bin/composer
       ;;
     Python)
-      mise uninstall python@latest
+      # Remove UV-installed Python and tools
+      uv tool uninstall black isort ruff mypy pytest pre-commit 2>/dev/null || true
+      uv python uninstall 3.12 2>/dev/null || true
       ;;
     Elixir)
       mise uninstall elixir@latest

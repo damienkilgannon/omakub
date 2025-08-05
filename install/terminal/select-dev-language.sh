@@ -29,7 +29,17 @@ if [[ -n "$languages" ]]; then
       rm composer-setup.php
       ;;
     Python)
-      mise use --global python@latest
+      # UV is now installed as a core terminal tool
+      # Install latest Python with UV
+      uv python install 3.12
+      
+      # Install essential Python development tools globally via UV
+      uv tool install black
+      uv tool install isort  
+      uv tool install ruff
+      uv tool install mypy
+      uv tool install pytest
+      uv tool install pre-commit
       ;;
     Elixir)
       mise use --global erlang@latest

@@ -13,20 +13,26 @@ CHOICES=(
   "Geekbench         CPU benchmaking tool"
   "Mainline Kernels  Install newer Linux kernels than Ubuntu defaults"
   "Minecraft         Everyone's favorite blocky building game"
+  "Mise              Version manager for programming languages and tools"
   "OBS Studio        Record screencasts with inputs from both display + webcam"
+  "Obsidian          Knowledge management and note-taking app"
   "Ollama            Run LLMs, like Meta's Llama3, locally"
   "Retroarch         Play retro games"
+  "Signal            Private messaging app with end-to-end encryption"
   "Spotify           Stream music from the world's most popular service"
   "Steam             Play games from Valve's store"
   "Tailscale         Mesh VPN based on WireGuard and with Magic DNS"
+  "Telegram          Fast and secure messaging app"
   "VirtualBox        Virtual machines to run Windows/Linux"
+  "VSCode            Microsoft's popular code editor"
+  "WhatsApp          WhatsApp web messaging app"
   "Zoom              Attend and host video chat meetings"
   "Web Apps          Install web apps with their own icon and shell"
   "> All             Re-run any of the default installers"
   "<< Back           "
 )
 
-CHOICE=$(gum choose "${CHOICES[@]}" --height 25 --header "Install application")
+CHOICE=$(gum choose "${CHOICES[@]}" --height 31 --header "Install application")
 
 if [[ "$CHOICE" == "<< Back"* ]] || [[ -z "$CHOICE" ]]; then
   # Don't install anything
@@ -49,6 +55,7 @@ else
   "ollama") INSTALLER_FILE="$OMAKUB_PATH/install/terminal/optional/app-ollama.sh" ;;
   "tailscale") INSTALLER_FILE="$OMAKUB_PATH/install/terminal/optional/app-tailscale.sh" ;;
   "geekbench") INSTALLER_FILE="$OMAKUB_PATH/install/terminal/optional/app-geekbench.sh" ;;
+  "mise") INSTALLER_FILE="$OMAKUB_PATH/install/terminal/optional/app-mise.sh" ;;
   *) INSTALLER_FILE="$OMAKUB_PATH/install/desktop/optional/app-$INSTALLER.sh" ;;
   esac
 

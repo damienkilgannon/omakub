@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Create WhatsApp web app shortcut
 cat <<EOF >~/.local/share/applications/WhatsApp.desktop
 [Desktop Entry]
 Version=1.0
@@ -13,3 +14,5 @@ Categories=GTK;
 MimeType=text/html;text/xml;application/xhtml_xml;
 StartupNotify=true
 EOF
+
+update-desktop-database ~/.local/share/applications/
